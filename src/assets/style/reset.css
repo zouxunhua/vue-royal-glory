@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body, button, input, select, textarea {
+  font-family: 'Microsoft YaHei', Tahoma, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-style: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+/*# sourceMappingURL=reset.css.map */

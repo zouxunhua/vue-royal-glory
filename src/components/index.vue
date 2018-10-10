@@ -19,14 +19,12 @@
                            </a>
                          </li>
                        </transition-group>
-                       
-                      
                     </div>
                       <ul class='tabBar'>
                           <li v-for="(item,index) in weeklyNewspaper" :class="{'active':index===currentIndex}" @mouseover="change(index)">{{item}}</li>
-                      
                       </ul>
                   </div>
+                  <!--全部  新闻  公告  活动  赛事-->
                   <div class='theTopOfPeople'>
                       <div class='tabNav'>
                            <ul class='tabNav-left'>
@@ -47,17 +45,17 @@
                               <li v-show="currentType==='announcement'" v-for="(item, index) in announcementList" :key="item.id"><a href="">{{item.content3}}</a><span>{{item.releaseTime3}}</span></li>
                               <li v-show="currentType==='activity'" v-for="(item, index) in activityList" :key="item.id"><a href="">{{item.content4}}</a><span>{{item.releaseTime4}}</span></li>
                               <li v-show="currentType==='race'" v-for="(item, index) in raceList" :key="item.id"><a href="">{{item.content5}}</a><span>{{item.releaseTime5}}</span></li>
-                            
                           </ul>
                       </div>
                   </div>
+                  <!--下载游戏  新人专区  体验专区-->
                   <div class='downloadGame'>
                       <div class='xiazaiyouxi'></div>
                       <div class='newZone'></div>
                       <div class='experienceZone'></div>
                   </div>
             </div>
-            <!--官方爆料站-->
+            <!--官方爆料站  王者荣耀助手  王者文化站  赛事专区-->
             <div class="whistle-blowing">
                 <div class='official'></div>
                 <div class='glory '></div>
@@ -76,118 +74,8 @@
               <ul class='tabTitle'>
                   <li @mouseenter="selectType=item.type" v-for="(item, index) in tabtitle" :key="index" :class="{activeNess:selectType===item.type}">{{item.tabName}}</li>
               </ul>
-              <template v-if="selectType==='fineColumns'">
-                    <div class="outview">
-                        <div class='optionButton'>
-                            <button v-show="selectType==='fineColumns'" v-for="(item, index) in buttonList1" :key="item.id">{{item.buttonName}}</button>
-                           
-                        </div>
-                        <div class='vedio1'>  
-                            <div class='yangyuhuan' v-for="(item, index) in videoPreview1" :key="index">
-                                <div class='videoBrowse'>
-                                    <img :src="item.imgUrl"/>
-                                    <div class="footBar">
-                                        <div class='foot-left'>
-                                            <img src="../assets/img/video.png"/>{{item.viewsNumber}}
-                                        </div>
-                                        <div class='time'>{{item.time}}</div>
-                                    </div>
-                                </div>
-                                <div class='filmReview '>{{item.comments}}</div>
-                            </div>
-                        </div>
-                    
-                    </div>
-              </template>
-              <template v-else-if="selectType==='eventBoutique'">
-                    <div class="outview">
-                        <div class='optionButton'>
-                            <button v-show="selectType==='eventBoutique'" v-for="(item, index) in buttonList2" :key="item.id">{{item.buttonName}}</button>
-                        </div>
-                        <div class='vedio1'>  
-                            <div class='yangyuhuan' v-for="(item, index) in videoPreview2" :key="index">
-                                <div class='videoBrowse'>
-                                    <img :src="item.imgUrl"/>
-                                    <div class="footBar">
-                                        <div class='foot-left'>
-                                            <img src="../assets/img/video.png"/>{{item.viewsNumber}}
-                                        </div>
-                                        <div class='time'>{{item.time}}</div>
-                                    </div>
-                                </div>
-                                <div class='filmReview '>{{item.comments}}</div>
-                            </div>
-                        </div>
-                    
-                    </div>
-              </template>
-              <template v-else="selectType==='heroStrategy'">
-                    <div class="outview">
-                         <div class='chooseHero' @mouseenter="heroChoose=true" @mouseleave="heroChoose=false">
-                           <p>选择英雄</p><span class="el-icon-caret-bottom"></span>
-                        </div>
-                        <!--英雄选项-->
-                        <div class="heroOption" v-show="heroChoose" @mouseenter="heroChoose=true" @mouseleave="heroChoose=false">
-                            <ul class="option-left">
-                                <li v-for="(item, index) in heroLeftOption" :key="item.id" @mouseenter="nowType=item.heroType">
-                                    <a href="JavaScript:void;">{{item.heroType}}</a>
-                                </li>
-                            </ul>
-                            <ul class="option-right">
-                                <li v-show="nowType==='热门'" v-for="(item, index) in heroRightOption1" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                                <li v-show="nowType==='坦克'" v-for="(item, index) in heroRightOption2" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                                <li v-show="nowType==='战士'" v-for="(item, index) in heroRightOption3" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                                <li v-show="nowType==='刺客'" v-for="(item, index) in heroRightOption4" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                                <li v-show="nowType==='法师'" v-for="(item, index) in heroRightOption5" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                                <li v-show="nowType==='射手'" v-for="(item, index) in heroRightOption6" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                                <li v-show="nowType==='辅助'" v-for="(item, index) in heroRightOption7" :key="item.id">
-                                    <a>
-                                        <img :src="item.imgUrl"/><p>{{item.heroName}}</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class='vedio1'>  
-                            <div class='yangyuhuan' v-for="(item, index) in videoPreview3" :key="index">
-                                <div class='videoBrowse'>
-                                    <img :src="item.imgUrl"/>
-                                    <div class="footBar">
-                                        <div class='foot-left'>
-                                            <img src="../assets/img/video.png"/>{{item.viewsNumber}}
-                                        </div>
-                                        <div class='time'>{{item.time}}</div>
-                                    </div>
-                                </div>
-                                <div class='filmReview '>{{item.comments}}</div>
-                            </div>
-                        </div>
-                    
-                    </div>
-              </template>
+              <!--视频组件-->
+              <vue-video :select-type="selectType"></vue-video>
           </div>
           <!--英雄皮肤-->
           <div class='heroSkin'>
@@ -212,7 +100,13 @@
                       </div>
                   </div>
                   <div class="showHero">
-                      <img v-for="(itemSon, i) in item.flatImg" :key="itemSon.id" :src="itemSon.flatUrl" class=""/>
+                      <a v-for="(itemSon, i) in item.flatImg" :key="itemSon.id" @mouseenter="showName=i">
+                          <img :src="itemSon.flatUrl" class=""/>
+                          <!--遮罩层-->
+                          <div class="mask1" v-show="showName===i">
+                             <p>{{itemSon.heroName}}</p>
+                          </div>
+                      </a>
                   </div>
               </div>
               <div v-show="heroSkinType==='最新皮肤'" class="tab-item" v-for="(item, index) in tabItem2" :key="item.id">
@@ -226,14 +120,23 @@
                       </div>
                   </div>
                   <div class="showHero">
-                      <img v-for="(itemSon, i) in item.flatImg" :key="itemSon.id" :src="itemSon.flatUrl" class=""/>
+                      <a v-for="(itemSon, i) in item.flatImg" :key="itemSon.id" @mouseenter="showName=i">
+                          <img :src="itemSon.flatUrl" class=""/>
+                          <!--遮罩层-->
+                           <div class="mask2" v-show="showName===i">
+                               <p>{{itemSon.heroName}}<br/>&nbsp;|<br/>{{itemSon.mount}}</p>
+                           </div>
+                      </a>
                   </div>
               </div>
               <div v-show="heroSkinType==='周免英雄'" class="tab-item">
                   <ul class="weeksFromHero">
-                        <li v-for="(item, index) in tabItem3" :key="item.id">
+                        <li v-for="(item, index) in tabItem3" :key="item.id" @mouseenter="showName=index">
                             <a>
                                 <img :src="item.url"/>
+                                <div class="mask3" v-show="showName===index && item.heroName">
+                                   <p>{{item.heroName}}</p>
+                                </div>
                             </a>
                         </li>
                   </ul>
@@ -274,26 +177,30 @@
                         </ul>
                     </div>
                 </div>
+                <!--视频-->
                 <div class="pre-view">
-                     <div class='vedio1'>  
-                      <div class='yangyuhuan' v-for="(item, index) in item.racePreview" :key="index">
-                          <div class='videoBrowse'>
-                             <img :src="item.imgUrl"/>
-                             <div class="footBar">
-                                  <div class='foot-left'>
-                                      <img src="../assets/img/video.png"/>{{item.viewsNumber}}
-                                  </div>
-                                  <div class='time'>{{item.time}}</div>
-                             </div>
-                          </div>
-                          <div class='filmReview '>{{item.comments}}</div>
-                      </div>
-                    </div>
+                     <ul class='vedio1'>  
+                      <li class='yangyuhuan' v-for="(item, index) in item.racePreview" :key="index" @mouseenter="showMask=index" @mouseleave="showMask=''">
+                          <a>
+                              <div class='videoBrowse'>
+                                <img :src="item.imgUrl"/>
+                                <div class="footBar">
+                                      <div class='foot-left'>
+                                          <img src="../assets/img/video.png"/>{{item.viewsNumber}}
+                                      </div>
+                                      <div class='time'>{{item.time}}</div>
+                                </div>
+                                  <!--视频遮罩层-->
+                                <div class="mask" v-show="showMask===index">
+                                    <Icon type="md-arrow-dropright-circle" />
+                                </div>
+                              </div>
+                              <div class='filmReview'>{{item.comments}}</div>
+                          </a>
+                      </li>
+                    </ul>
                 </div>
              </div>
-        
-
-
           </div>
           <!--KPL赛程-->
           <div class='agendaForCompetition'>
@@ -315,7 +222,6 @@
                           <div class="vs">VS</div>
                           <div class="ts"><img :src="item.twoImg"/><p>{{item.team}}</p></div>
                       </li>
-                     
                   </ul>
               </div>
               <div class="schedule-img">
@@ -330,6 +236,7 @@
 <script>
 import topNav from './common/topNav.vue'
 import footBar from './common/footBar.vue'
+import video from './video.vue'
 export default {
   data (){
       return{
@@ -337,162 +244,10 @@ export default {
           timer: '',
           currentType:'all',
           selectType:'fineColumns',
-          nowType:"热门",
-          heroChoose:false,
           heroSkinType:'最新英雄',
           onlyType:'KPL职业联赛',
-          //内容中心        精品栏目  赛事精品  英雄攻略
-          videoPreview1:[
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180929/0390f8dc3269e6d3fbd21d2ed18a948a.1538227565.7349cdec32978ee236813e8761d3d05b.184x124_14767.jpg',
-              viewsNumber:'119',
-              time:'2018-10-02',
-              comments:'铠的一刀直接砍到了五个人，也顺利的拿到五杀！'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180930/c4ca4238a0b923820dcc509a6f75849b.1538306843.93f22c61b50ccaf22ea45f992d74100f.184x124_75361.jpg',
-              viewsNumber:'372',
-              time:'2018-10-02',
-              comments:'王者荣耀：雅典娜无限连招，一路冲锋，只管戳戳戳！'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180930/c81e728d9d4c2f636f067f89cc14862c.1538310133.9da8ed136777103f962c43fc379b9fec.184x124_54263.jpg',
-              viewsNumber:'152',
-              time:'2018-10-02',
-              comments:'王者荣耀：铠在塔边被妲己来回放风筝，状态惨不忍睹'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180928/c4ca4238a0b923820dcc509a6f75849b.1538134133.6737671317e73800618489340f7e7684.184x124_54639.jpg',
-              viewsNumber:'9110',
-              time:'2018-10-01',
-              comments:'王者荣耀：只为一杀，貂蝉丝血闯塔,网友问：值么？'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180929/251f448445d77959332f735cb294e2f6.1538193736.49ceff85a19831769e080da3c0d3b50d.184x124_37282.jpg',
-              viewsNumber:'2万',
-              time:'2018-10-01',
-              comments:'王者荣耀：新版廉颇前期教学，出门买学识宝石，孙悟空大呼过瘾！'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180929/c4ca4238a0b923820dcc509a6f75849b.1538218222.143e63bdbc2d2c67a0c70bf0e94fe900.184x124_34546.png',
-              viewsNumber:'1464',
-              time:'2018-10-02',
-              comments:'王者荣耀：使用百里守约，需要多高到命中率？'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180929/495cd8210b613960ed4c0c4780c8d1e2.1538214627.2594495ec7b2bd06bc84952c973e96ee.184x124_19385.jpg',
-              viewsNumber:'6',
-              time:'2018-10-02',
-              comments:'国服大乔芸汐集: 大乔一骑当千，快来看看吧'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180929/263142ac6066aedff04a95242357aa64.1538229205.df4c53616df8264a948f4e15eb424685.184x124_15967.jpg',
-              viewsNumber:'822',
-              time:'2018-10-02',
-              comments:'王者荣耀：教你如何拥有三条？你们能不能放过我'
-            },
-          ],
-          videoPreview2:[
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/efab27010d891b27671011b9f061b54f/0/?width=230&height=140',
-              viewsNumber:'119',
-              time:'2018-10-02',
-              comments:'铠的一刀直接砍到了五个人，也顺利的拿到五杀！'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'372',
-              time:'2018-10-02',
-              comments:'王者荣耀：雅典娜无限连招，一路冲锋，只管戳戳戳！'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'152',
-              time:'2018-10-02',
-              comments:'王者荣耀：铠在塔边被妲己来回放风筝，状态惨不忍睹'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'9110',
-              time:'2018-10-01',
-              comments:'王者荣耀：只为一杀，貂蝉丝血闯塔,网友问：值么？'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'2万',
-              time:'2018-10-01',
-              comments:'王者荣耀：新版廉颇前期教学，出门买学识宝石，孙悟空大呼过瘾！'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'1464',
-              time:'2018-10-02',
-              comments:'王者荣耀：使用百里守约，需要多高到命中率？'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'6',
-              time:'2018-10-02',
-              comments:'国服大乔芸汐集: 大乔一骑当千，快来看看吧'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3146194188/61abdd1ac65e8ef3a1095e5e3807b9f7/0/?width=230&height=140',
-              viewsNumber:'822',
-              time:'2018-10-02',
-              comments:'王者荣耀：教你如何拥有三条？你们能不能放过我'
-            },
-          ],
-          videoPreview3:[
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20181002/82dbbdde1783a256124f77e40941619f.1538476586.9fd581222a9670fe5e6b87866b6d40b8.184x124_70975.png',
-              viewsNumber:'119',
-              time:'2018-10-02',
-              comments:'铠的一刀直接砍到了五个人，也顺利的拿到五杀！'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20181002/c4ca4238a0b923820dcc509a6f75849b.1538485028.4fd38e5c5050c74d5e58fdd3775906ab.184x124_75755.jpg',
-              viewsNumber:'372',
-              time:'2018-10-02',
-              comments:'王者荣耀：雅典娜无限连招，一路冲锋，只管戳戳戳！'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20181002/20099cb446b73a1290b53f0f6ade6c1e.1538486082.26a192e93465da6c0d73705785ab93fc.184x124_17541.jpg',
-              viewsNumber:'152',
-              time:'2018-10-02',
-              comments:'王者荣耀：铠在塔边被妲己来回放风筝，状态惨不忍睹'
-            },
-            {
-              imgUrl:'//itea-cdn.qq.com/file/tgl/20180930/c81e728d9d4c2f636f067f89cc14862c.1538310133.9da8ed136777103f962c43fc379b9fec.184x124_54263.jpg',
-              viewsNumber:'9110',
-              time:'2018-10-01',
-              comments:'王者荣耀：只为一杀，貂蝉丝血闯塔,网友问：值么？'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3228631485/3559a548eaecd7786f39d4a70152b9c8/0/?width=230&height=140',
-              viewsNumber:'2万',
-              time:'2018-10-01',
-              comments:'王者荣耀：新版廉颇前期教学，出门买学识宝石，孙悟空大呼过瘾！'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3228631485/3559a548eaecd7786f39d4a70152b9c8/0/?width=230&height=140',
-              viewsNumber:'1464',
-              time:'2018-10-02',
-              comments:'王者荣耀：使用百里守约，需要多高到命中率？'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3228631485/3559a548eaecd7786f39d4a70152b9c8/0/?width=230&height=140',
-              viewsNumber:'6',
-              time:'2018-10-02',
-              comments:'国服大乔芸汐集: 大乔一骑当千，快来看看吧'
-            },
-            {
-              imgUrl:'//shp.qpic.cn/cfwebcap/3228631485/3559a548eaecd7786f39d4a70152b9c8/0/?width=230&height=140',
-              viewsNumber:'822',
-              time:'2018-10-02',
-              comments:'王者荣耀：教你如何拥有三条？你们能不能放过我'
-            },
-          ],
-        
+          showMask:'',
+          showName:'',
           //KPL赛程表格数据
           tableData: [{
             date: '10-3 15:00',
@@ -601,148 +356,6 @@ export default {
               {type:"heroStrategy",tabName:"英雄攻略"},
            
           ],
-          buttonList1:[
-              {id:"a1",buttonName:"上分拍档"},
-              {id:"a2",buttonName:"天下王者"},
-              {id:"a3",buttonName:"荣耀兵器谱"},
-              {id:"a4",buttonName:"百星王者带你飞"},
-              {id:"a5",buttonName:"零度带你飞"},
-              {id:"a6",buttonName:"破冰英雄"},
-              {id:"a7",buttonName:"王者克制论"},
-              {id:"a8",buttonName:"峡谷情报局"}
-          ],
-          buttonList2:[
-              {id:"a9",buttonName:"王者炸麦了"},
-              {id:"a10",buttonName:"KPL观赛指南"},
-              {id:"a11",buttonName:"荣耀进行时"},
-              {id:"a12",buttonName:"大葱哥聊KPL"},
-              {id:"a13",buttonName:"王者职业教学"},
-              {id:"a14",buttonName:"QG荣耀学院"},
-              {id:"a15",buttonName:"我来carry"}
-          ],
-          //选择英雄
-          heroLeftOption:[
-              {id:"b1",heroType:"热门"},
-              {id:"b2",heroType:"坦克"},
-              {id:"b3",heroType:"战士"},
-              {id:"b4",heroType:"刺客"},
-              {id:"b5",heroType:"法师"},
-              {id:"b6",heroType:"射手"},
-              {id:"b7",heroType:"辅助"},
-          ],
-          heroRightOption1:[
-              {id:'b8',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/169/169.jpg',heroName:'后羿'},
-              {id:'b9',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/112/112.jpg',heroName:'鲁班七号'},
-              {id:'b10',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/167/167.jpg',heroName:'孙悟空'},
-              {id:'b11',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/150/150.jpg',heroName:'韩信'},
-              {id:'b12',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/109/109.jpg',heroName:'妲己'},
-              {id:'b13',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/129/129.jpg',heroName:'典韦'},
-              {id:'b14',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/142/142.jpg',heroName:'安其拉'},
-              {id:'b15',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/193/193.jpg',heroName:'铠'},
-              {id:'b16',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/166/166.jpg',heroName:'亚瑟'},
-              {id:'b17',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/508/508.jpg',heroName:'伽罗'},
-              {id:'b18',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/134/134.jpg',heroName:'达摩'},
-              {id:'b19',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b20',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/131/131.jpg',heroName:'李白'},
-              {id:'b21',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/144/144.jpg',heroName:'程咬金'},
-              {id:'b22',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/154/154.jpg',heroName:'花木兰'},
-              {id:'b23',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/141/141.jpg',heroName:'貂蝉'},
-              {id:'b24',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/111/111.jpg',heroName:'孙尚香'},
-              {id:'b25',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b26',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b27',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/127/127.jpg',heroName:'甄姬'},
-          ],
-          heroRightOption2:[
-              {id:'b28',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/198/198.jpg',heroName:'梦奇'},
-              {id:'b29',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/194/194.jpg',heroName:'苏烈'},
-              {id:'b30',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b31',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/149/149.jpg',heroName:'刘邦'},
-              {id:'b32',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/175/175.jpg',heroName:'钟馗'},
-              {id:'b33',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/113/113.jpg',heroName:'庄周'},
-              {id:'c1',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/108/108.jpg',heroName:'墨子'},
-              {id:'c2',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/114/114.jpg',heroName:'刘禅'},
-              {id:'c3',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/105/105.jpg',heroName:'廉颇'},
-              {id:'c4',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/120/120.jpg',heroName:'白起'},
-              {id:'c5',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'c6',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/144/144.jpg',heroName:'程咬金'}
-          ],
-          heroRightOption3:[
-              {id:'b34',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b35',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b36',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b37',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b38',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b39',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b40',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b41',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b42',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b43',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b44',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b45',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-              {id:'b46',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/187/187.jpg',heroName:'东皇太一'},
-          ],
-          heroRightOption4:[
-              {id:'b47',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b48',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b49',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b50',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b51',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b52',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b53',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b54',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b55',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b56',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b57',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b58',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-              {id:'b59',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/196/196.jpg',heroName:'百里守约'},
-          ],
-          heroRightOption5:[
-              {id:'b60',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b61',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b62',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b63',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b64',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b65',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b66',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b67',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b68',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b69',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b70',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b71',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-              {id:'b72',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/135/135.jpg',heroName:'项羽'},
-          ],
-          heroRightOption6:[
-              {id:'b73',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b74',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b75',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b76',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b77',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b78',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b79',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b80',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b81',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b82',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b83',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b84',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-              {id:'b85',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/190/190.jpg',heroName:'诸葛亮'},
-          ],
-          heroRightOption7:[
-              {id:'b86',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b87',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b88',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b89',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b90',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b91',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b92',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b93',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b94',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b95',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b96',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b97',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b98',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b99',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-              {id:'b100',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/heroimg/152/152.jpg',heroName:'王昭君'},
-          ],
           //英雄皮肤
           heroSkins:[
               {id:"c20",skintype:"最新英雄"},
@@ -753,10 +366,10 @@ export default {
               {
                   id:'c23',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/freehero/horizontal/508.jpg',heroDescribe:'新英雄：伽罗',onlineTime:'上线时间：2018-09-27',
                   flatImg:[
-                    {id:'c26',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/509.jpg"},
-                    {id:'c27',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/137.jpg"},
-                    {id:'c28',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/510.jpg"},
-                    {id:'c29',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/125.jpg"}
+                    {id:'c26',heroName:'盾山',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/509.jpg"},
+                    {id:'c27',heroName:'司马懿',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/137.jpg"},
+                    {id:'c28',heroName:'孙策',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/510.jpg"},
+                    {id:'c29',heroName:'元歌',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/125.jpg"}
                   ]
               }
           ],
@@ -764,21 +377,21 @@ export default {
               {
                   id:'c24',imgUrl:'//game.gtimg.cn/images/yxzj/img201606/freehero/horizontal/198_skin.jpg',heroDescribe:'新皮肤：梦奇-胖达荣荣',onlineTime:'上线时间：2018-09-30',
                   flatImg:[
-                      {id:'c30',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/503_skin.jpg"},
-                      {id:'c31',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/508_skin.jpg"},
-                      {id:'c32',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/120_skin.jpg"},
-                      {id:'c33',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/144_skin.jpg"}
+                      {id:'c30',heroName:'梦奇',mount:'胖达荣荣',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/198_skin.jpg"},
+                      {id:'c31',heroName:'狂铁',mount:'御狮',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/503_skin.jpg"},
+                      {id:'c32',heroName:'伽罗',mount:'花见巫女',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/508_skin.jpg"},
+                      {id:'c33',heroName:'白起',mount:'星夜王子',flatUrl:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/120_skin.jpg"}
                   ] 
               }
           ],
           tabItem3:[
-                      {id:'c34',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/177.jpg"},
-                      {id:'c35',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/149.jpg"},
-                      {id:'c36',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/139.jpg"},
-                      {id:'c37',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/118.jpg"},
-                      {id:'c38',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/129.jpg"},
-                      {id:'c39',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/152.jpg"},
-                      {id:'c40',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/504.jpg"},
+                      {id:'c34',heroName:'成吉思汗',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/177.jpg"},
+                      {id:'c35',heroName:'刘邦',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/149.jpg"},
+                      {id:'c36',heroName:'老夫子',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/139.jpg"},
+                      {id:'c37',heroName:'孙膑',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/118.jpg"},
+                      {id:'c38',heroName:'典韦',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/129.jpg"},
+                      {id:'c39',heroName:'王昭君',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/152.jpg"},
+                      {id:'c40',heroName:'米莱狄',url:"//game.gtimg.cn/images/yxzj/img201606/freehero/vertical/504.jpg"},
                       {id:'c41',url:"//game.gtimg.cn/images/yxzj/web201605/new/more_hero.jpg"}
           ],
           //赛事中心tab栏
@@ -1283,7 +896,8 @@ export default {
   },
   components: {
      'top-nav':topNav,
-     'foot-bar':footBar
+     'foot-bar':footBar,
+     'vue-video':video
   }
         
 }
@@ -1609,157 +1223,7 @@ export default {
             }
           }
         }
-        .outview{
-            height:85%;
-            display:flex;
-            flex-direction:column;
-            justify-content:space-between;
-            position:relative;
-            .chooseHero{
-              width:10%;
-              height:7%;
-              font-size:15px;
-              display:flex;
-              p{
-                width:75%;
-                height:100%;
-                line-height:27px;
-                cursor:pointer;
-              }
-              span{
-                  width:7%;
-                  height:100%;
-                  line-height:27px;
-                  cursor:pointer;
-                  display:inline-block;
-                  color:gold;
-              }
-            }
-            /*英雄选项*/
-            .heroOption{
-                width:95%;
-                height:88%;
-                background-color:#fff;
-                border:1px solid #ccc;
-                //opacity:.3;
-                z-index:99;
-                display:flex;
-                position:absolute;
-                top:36px;
-                .option-left{
-                    width:10%;
-                    height:100%;
-                    background-color:#f5f5f5;
-                    li{
-                        width:100%;
-                         height:12%;
-                         text-align:center;
-                         line-height:50px;
-                         &:hover{
-                             background-color:#f3c258;
-                         }
-                         a{
-                             color:black;
-                         }
-                    }
-                }
-                .option-right{
-                    width:90%;
-                    height:100%;
-                    padding:10px 15px;
-                    overflow-x:hidden;
-                    li{
-                        width:12%;
-                        height:33.333333%;
-                        padding:10px;
-                        float:left;
-                        img{
-                            height:60%;
-                            margin-left:5px;
-                        }
-                        p{
-                            text-align:center;
-                        }
-                    }
-                }
-            }
-            .optionButton{
-              width:100%;
-              height:7%;
-              display:flex;
-              justify-content:space-around;
-              align-items:center;
-              button{
-                height:25px;
-                padding:0 18px;
-                outline:none;
-                border-radius:10px;
-                border:2px solid #e5e5e5;
-                &:hover{
-                  border:2px solid #f3c258;
-                  background-color:#f3c258;
-                }
-              }
-            }
-            .vedio1{
-              width:100%;
-              height:91%;
-              margin-top:-8px;
-              flex-wrap:wrap;
-              display:flex;
-              justify-content:space-between;
-             
-              div{
-                width:24%;
-                height:49%;
-                
-                .videoBrowse{
-                  width:100%;
-                  height:75%;
-                  background-color:purple;
-                  position:relative;
-                  img{
-                    width:100%;
-                    height:100%;
-                  }
-                  .footBar{
-                    width:100%;
-                    height:20%;
-                    background-color:#3e3942;
-                    position:absolute;
-                    bottom:0px;
-                    z-index:3;
-                    display:flex;
-                    justify-content:space-between;
-                    color:#fff;
-                    .foot-left{
-                      display:flex;
-                      width:45%;
-                      height:100%;
-                      align-items:center;
-                      line-height:20px;
-                        img{
-                          width:22%;
-                          height:68%;
-                        }
-                    }
-                    .time{
-                      width:33%;
-                      
-                      line-height:30px;
-                    }
-                  }
-                }
-                .filmReview{
-                   width:100%;
-                  height:25%;
-                  padding:5px;
-                  
-                }
-              }
-            }
-          
-        }
+     
       }
       .heroSkin{
         width:23%;
@@ -1802,6 +1266,9 @@ export default {
             text-align:center;
             line-height:27px;
             border-bottom:3px solid f5f5f5;
+            a{
+              color:#000;
+            }
             &.active{
               border-bottom:3px solid orange;
             }
@@ -1831,10 +1298,25 @@ export default {
                    height:47.22222%;
                    width:23%;
                    margin-bottom:20px;
+                   position:relative;
                    a{
                      img{
                          width:100%;
                          height:100%;
+                     }
+                     .mask3{
+                         width:100%;
+                         height:100%;
+                         padding:20px 25.55555px;
+                         background-color:#000;
+                         display:flex;
+                         align-items:center;
+                         position:absolute;
+                         top:0;
+                         p{
+                           color:#f3a629;
+                           font-size:15px;
+                         }
                      }
                    }
                }
@@ -1864,7 +1346,6 @@ export default {
              .newHero{
                width:100%;
                height:30%;
-               
                padding:11px;
                .bigWord{
                  font-size:20px;
@@ -1875,12 +1356,45 @@ export default {
            .showHero{
              width:100%;
              height:47%;
-             
              display:flex;
              justify-content:space-between;
-             img{
+             a{
                width:23%;
                height:100%;
+               position:relative;
+                img{
+                  width:100%;
+                  height:100%;
+                }
+                .mask1{
+                  width:100%;
+                  height:100%;
+                  padding:20px 25.55555px;
+                  background-color:#000;
+                  display:flex;
+                  align-items:center;
+                  position:absolute;
+                  top:0;
+                  p{
+                    color:#f3a629;
+                    font-size:15px;
+                  }
+                }
+                .mask2{
+                  width:100%;
+                  height:100%;
+                  color:#f3a629;
+                  font-size:14px;
+                  padding:20px 27px;
+                  background-color:#000;
+                  position:absolute;
+                  top:0;
+                  display:flex;
+                  align-items:center;
+                  p{
+
+                  }
+                }
              }
            }
         }
@@ -1940,6 +1454,9 @@ export default {
             text-align:center;
             line-height:36px;
             border-bottom:3px solid f5f5f5;
+            a{
+              color:#000;
+            }
             &.active{
               border-bottom:3px solid orange;
             }
@@ -1987,15 +1504,15 @@ export default {
                   div{
                     font-size:27px;
                     overflow:hidden;/*超出长度的文字隐藏*/
-			        text-overflow:ellipsis;/*文字隐藏以后添加省略号*/
-			        white-space:nowrap;/*强制不换行*/
+			             text-overflow:ellipsis;/*文字隐藏以后添加省略号*/
+			             white-space:nowrap;/*强制不换行*/
                   }
                   p{
                     margin-top:7px;
                     font-size:15px;
                     overflow:hidden;/*超出长度的文字隐藏*/
-			        text-overflow:ellipsis;/*文字隐藏以后添加省略号*/
-			        white-space:nowrap;/*强制不换行*/
+			              text-overflow:ellipsis;/*文字隐藏以后添加省略号*/
+			              white-space:nowrap;/*强制不换行*/
 
                   }
                 }
@@ -2012,6 +1529,7 @@ export default {
                     
                     button{
                       height:25px;
+                      line-height:18px;
                       border:none;
                       outline:none;
                       border-radius:13px;
@@ -2043,52 +1561,71 @@ export default {
               display:flex;
               justify-content:space-between;
              
-              div{
+              .yangyuhuan{
                 width:24%;
                 height:49%;
-                
-                .videoBrowse{
-                  width:100%;
-                  height:75%;
-                  background-color:purple;
-                  position:relative;
-                  img{
+                margin-bottom:15px;
+                a{
+                  color:#000;
+                  .videoBrowse{
                     width:100%;
-                    height:100%;
-                  }
-                  .footBar{
-                    width:100%;
-                    height:20%;
-                    background-color:#3e3942;
-                    position:absolute;
-                    bottom:0px;
-                    z-index:3;
-                    display:flex;
-                    justify-content:space-between;
-                    color:#fff;
-                    .foot-left{
-                      display:flex;
-                      width:45%;
-                      height:100%;
-                      align-items:center;
-                      line-height:20px;
-                        img{
-                          width:22%;
-                          height:68%;
+                    height:75%;
+                    background-color:purple;
+                    position:relative;
+                    .mask{
+                        width:100%;
+                        height:100%;
+                        z-index:100;
+                        position:absolute;
+                        top:0;
+                        background-color:#1c2131;
+                        opacity:.8;
+                        text-align:center;
+                        line-height:115px;
+                        .ivu-icon-md-arrow-dropright-circle{
+                            color:#fff;
+                            font-size:35px;
+                            
                         }
                     }
-                    .time{
-                      width:33%;
-                      
-                      line-height:30px;
+                    img{
+                      width:100%;
+                      height:100%;
+                    }
+                    .footBar{
+                      width:100%;
+                      height:20%;
+                      background-color:#3e3942;
+                      position:absolute;
+                      bottom:0px;
+                      z-index:3;
+                      display:flex;
+                      justify-content:space-between;
+                      color:#fff;
+                      .foot-left{
+                        display:flex;
+                        width:45%;
+                        height:100%;
+                        align-items:center;
+                        line-height:20px;
+                          img{
+                            width:22%;
+                            height:68%;
+                          }
+                      }
+                      .time{
+                        width:33%;
+                        
+                        line-height:30px;
+                      }
                     }
                   }
-                }
-                .filmReview{
-                   width:100%;
-                  height:25%;
-                  padding:5px;
-                  
+                  .filmReview{
+                    width:100%;
+                    height:25%;
+                    padding:5px;
+                    
+                  }
                 }
               }
             }

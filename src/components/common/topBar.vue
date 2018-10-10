@@ -2,20 +2,23 @@
 <div>
         <div class="top-bar">
           <div class="nav-left">
+            <!--腾讯游戏-->
             <a href="http://game.qq.com/?ADTAG=IED.InnerCop.gameWeb.topNav%20target="><img class="txlogo" src="../../assets/img/txlogo.png" /></a>
             <span class="nav-separate"></span>
+            <!--超时空穿梭者-->
             <a href=""><img @mouseenter="showCar" @mouseleave="hideCar" class="cskcsz" :class="{hide: isShow}" src="../../assets/img/cskcsz.png" /></a>
           </div>
-
+          <!--成长守护平台     腾讯游戏排行榜-->
           <div class="nav-right">
             <a href="https://jiazhang.qq.com/jz/home.html?ADTAG=gamepcbanner" class="growth" :class="{ active: isActive===1 }" @mouseenter="highlight" @mouseleave="notBright"><img class="lq" src="../../assets/img/lq.png" />成长守护平台</a>
             <div class="game" :class="{ active: isActive===2 }" @mouseenter="light" @mouseleave="notBright">腾讯游戏排行榜<span class="el-icon-message"></span></div>
           </div>
         </div>
+         <!--超时空穿梭者hover时显示的图片-->
         <a href="http://ac.o2.qq.com/php/click.php?loc_id=119_0d8e2b9df01ce2966bb5d8dd52e865e1&info_data=2wxcQRbnHp-J1_yd_t4KwSiCuwXOUxeV5OtOENROJ_Oqh-l094Dl2CRTZiCix81aqJxIsfgutETohTNePFsPqxZAtLdbnapXC1DtIKxGXrIodIWdpCOZlalzoUzJ7Re5fuKoNOxzhgxKgFyi4w1KUCKfbJlL0KtJzWnGsmcyI2Noz-c7X-9GKQfBOHEHtqG29kjSnJJiv20F8rMzmfpvo9OBSpodO6_u55D9YQgfKck2wt569V86_4TUX7tTteL5BrpmKLDbxHWBUfGBoK4sZguuYkaoCjqDu8eRwdVktzlEj-dZfWWLHgwRXSKQHfAoDDTX-rbYAzaZfgTVxr27BWAMelBzNsMuXwWP8vqMHlyakgmaOaoMBxa63dmrfxZM7tiJJhAoFP1Jex87kvv8knVkBacHFGfWX5YqrGK3mUY">
             <img class="qqfc" @mouseenter="showCar" @mouseleave="hideCar" src="../../assets/img/qqfc.jpg" v-show="isShow" />
         </a>
-        
+         <!--腾讯游戏排行榜hover时显示的面板-->
        <div class="gameList" v-show="gamelistShow" @mouseenter="longShow" @mouseleave="hideGameList">
             <div class="xinYou" v-for="(item, index) in gameOne" :key="item.title">
                   <div class="header"><b>{{item.title}}</b><span class="more">更多>></span></div>
@@ -27,8 +30,8 @@
                         <div class="officialWebsite" :class="{ initActive: i+1===1 }">
                               <img class="gameads" :src="itemSon.gamebarUrl"/>
                               <div class="fooBar">
-                                  <span class="entergw"><img class="iconfo" src="../../assets/img/home.png"/>进入官网</span>
-                                  <span class="entergw"><img class="iconfo" src="../../assets/img/download.png"/>下载游戏</span>
+                                  <span class="entergw"><Icon type="md-home" /><span>进入官网</span></span>
+                                  <span class="entergw"><Icon type="md-download" /><span>下载游戏</span></span>
                               </div>
                         </div>
                     </li>
@@ -44,14 +47,15 @@
                         <div class="officialWebsite" :class="{ initActive: i+1===1 }">
                               <img class="gameads" :src="itemSon.gamebarUrl"/>
                               <div class="fooBar">
-                                  <span class="entergw"><img class="iconfo" src="../../assets/img/home.png"/>进入官网</span>
-                                  <span class="entergw"><img class="iconfo" src="../../assets/img/download.png"/>下载游戏</span>
+                                  <span class="entergw"><Icon type="md-home" /><span>进入官网</span></span>
+                                  <span class="entergw"><Icon type="md-download" /><span>下载游戏</span></span>
                               </div>
                         </div>
                         
                     </li>
                   </ul>
             </div> 
+            <!--第三列-->
             <div class="thirdcolumn">
                 <div class="xinYou xyth" v-for="(item, index) in gameThree" :key="item.title">
                       <div class="header"><b>{{item.title}}</b><span class="more">更多>></span></div>
@@ -63,8 +67,9 @@
                             <div class="officialWebsite">
                                   <img class="gameads" :src="itemSon.gamebarUrl"/>
                                   <div class="fooBar">
-                                      <span class="entergw"><img class="iconfo" src="../../assets/img/home.png"/>进入官网</span>
-                                      <span class="entergw"><img class="iconfo" src="../../assets/img/download.png"/>下载游戏</span>
+                                      <Icon type="md-home" />
+                                      <Icon type="logo-apple" />
+                                      <Icon type="logo-android" />
                                   </div>
                             </div>
                             
@@ -78,8 +83,9 @@
                             <span class="serialNumber" :class="{  redness: i+1===1 || i+1===2 || i+1===3 }">{{i+1}}</span><span class="listname">{{itemSon.nameOfGame}}</span>
                             <div class="officialWebsite" :class="{ initActive: i+1===1 }">
                                   <div class="fooBar">
-                                      <span class="entergw"><img class="iconfo" src="../../assets/img/home.png"/>进入官网</span>
-                                      <span class="entergw"><img class="iconfo" src="../../assets/img/download.png"/>下载游戏</span>
+                                      <Icon type="md-home" />
+                                      <Icon type="logo-apple" />
+                                      <Icon type="logo-android" />
                                   </div>
                                   <img class="gameads" :src="itemSon.gamebarUrl"/>
                             </div>
@@ -101,6 +107,7 @@ import $ from "jquery";
           isActive:null,
           isHover:null,
           gamelistShow:false,
+          //腾讯游戏排行榜hover时显示的面板的数据
           gameOne:[{
             title:'新游排行榜',
             gameList:[
@@ -154,7 +161,7 @@ import $ from "jquery";
         }
     },
     mounted() {
-      
+      //控制面板li的显示隐藏
       $('.gameList li').mouseenter(function () {
           $(this).children('div').show().parent().siblings('li').children('div').hide();
           $(this).parent().parent().siblings('.xyth').children().children('li').children('div').hide();
@@ -275,7 +282,7 @@ import $ from "jquery";
 /*腾讯游戏排行榜*/
 .gameList{
     width:700px;
-    height:420px;
+    height:460px;
     padding:10px;
     border:1px solid #ccc;
     position:absolute;
@@ -351,12 +358,20 @@ import $ from "jquery";
                  .entergw{
                    display:flex;
                    align-items:center;
-                   .iconfo{
-                     width:20px;
-                     margin-right:5px;
+                  .ivu-icon{
+                      font-size:20px;
+                      margin-right:3px;
+                   }
+                   &:hover{
+                     .ivu-icon{
+                       color:red;
+                     }
+                     span{
+                       color:red;
+                       text-decoration:underline;
+                     }
                    }
                  }
-            
                }
             }
             .initActive{
@@ -374,6 +389,90 @@ import $ from "jquery";
               margin-top:-17px;
             }
         }
+        .xinYou{
+          margin-right:25px;
+          .header{
+            padding-bottom:3px;
+            display:flex;
+            justify-content:space-between;
+            .more:hover{
+              color:red;
+              text-decoration:underline;
+              cursor:pointer;
+            }
+          }
+          .fhead{
+            margin-top:10px;
+            margin-bottom:13px;
+          }
+          .subtitle{
+            padding:8px 0 10px;
+          }
+          .nameOfGame{
+             width:100%;
+             margin:5px 0;
+            .serialNumber{
+              width:17px;
+              height:17px;
+              text-align:center;
+              margin-right:20px;
+              display:inline-block;
+              border:1px solid #000;
+              z-index:9999;
+              position:absolute;
+             
+            }
+            .redness{
+              background-color:red;
+              color:#fff;
+              border:none;
+            }
+             .listname{
+                padding-left:37px;
+             }
+             /*腾讯游戏排行榜中鼠标悬停时出现的图片*/
+            .officialWebsite{
+               width:100%;
+               height:100px;
+               border:1px solid #000;
+               display:none;
+               position:relative;
+               .gameads{
+                 width:100%;
+                  height:100%;
+                  display:inline-block;
+               }
+               .fooBar{
+                 height:40px;
+                 width:100%;
+                 background-color:#404040;
+                 color:#fff;
+                 margin-top:-45px;
+                 display:flex;
+                 justify-content:space-around;
+                 z-index:9999;
+                 position:absolute;
+                 font-size:22px;
+                 bottom:0;
+                 .ivu-icon{
+                   width:33.3333333%;
+                   height:100%;
+                   line-height:40px;
+                   border-left:1px solid #707070;
+                   text-align:center;
+                   &:hover{
+                     color:red;
+                   }
+                 }
+            
+               }
+            }
+            .initActive{
+             display:inline-block;
+             
+            }
+          }
+    }
     }
    
   }

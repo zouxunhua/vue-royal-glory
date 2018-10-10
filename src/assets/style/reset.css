@@ -14,12 +14,21 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
 }
 
+img {
+  display: inline-block;
+}
+
 ul, ol {
   list-style: none;
+  display: inline-block;
 }
 
 a {
   text-decoration: none;
   outline: none;
+}
+
+.yellow {
+  background-color: yellow;
 }
 /*# sourceMappingURL=reset.css.map */
